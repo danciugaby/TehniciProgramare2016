@@ -10,3 +10,9 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/Lab2/LayeredPanels/nbproject/private/
+/Lab2/LayeredPanels/build/
+/Lab2/LayeredPanels/dist/
+/Lab2/Menus/nbproject/private/
+/Lab2/Menus/build/
+/Lab2/MenuDemo/nbproject/private/
