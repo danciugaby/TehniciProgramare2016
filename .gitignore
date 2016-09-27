@@ -20,3 +20,7 @@ hs_err_pid*
 /Lab2/EventsNumberReader/dist/
 /Lab2/EventsNumberReader/build/
 /Lab3/EventModel/nbproject/private/
+/Lab3/EventModel/build/
+/Lab3/Concurrency/nbproject/private/
+/Lab3/Concurrency/build/
+/Lab3/Concurrency/dist/
