@@ -30,3 +30,6 @@ hs_err_pid*
 /Lab5/Bindings/build/
 /Lab5/Bindings/dist/
 /Lab5/BindingHelloWorld/dist/
+/Lab5/BindingList/nbproject/private/
+/Lab5/BindingList/dist/
+/Lab5/BindingList/build/
