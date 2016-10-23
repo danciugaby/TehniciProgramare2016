@@ -45,10 +45,10 @@ public class ButtonsDEmo extends javax.swing.JFrame {
         buttonGroup = new javax.swing.ButtonGroup();
         jPanelButtonContainer = new javax.swing.JPanel();
         jRadioButtonBird = new javax.swing.JRadioButton();
-        jRadioButtonDog = new javax.swing.JRadioButton();
         jRadioButtonPig = new javax.swing.JRadioButton();
         jRadioButtonCat = new javax.swing.JRadioButton();
         jRadioButtonRabbit = new javax.swing.JRadioButton();
+        jRadioButtonDog = new javax.swing.JRadioButton();
         jLabelImageView = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,11 +66,9 @@ public class ButtonsDEmo extends javax.swing.JFrame {
                 jRadioButtonBirdActionPerformed(evt);
             }
         });
-
-        jRadioButtonDog.setText("Dog");
-        jRadioButtonDog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonDogActionPerformed(evt);
+        jRadioButtonBird.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jRadioButtonBirdKeyPressed(evt);
             }
         });
 
@@ -95,18 +93,29 @@ public class ButtonsDEmo extends javax.swing.JFrame {
             }
         });
 
+        jRadioButtonDog.setText("Dog");
+        jRadioButtonDog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelButtonContainerLayout = new javax.swing.GroupLayout(jPanelButtonContainer);
         jPanelButtonContainer.setLayout(jPanelButtonContainerLayout);
         jPanelButtonContainerLayout.setHorizontalGroup(
             jPanelButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelButtonContainerLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanelButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonRabbit)
-                    .addComponent(jRadioButtonPig)
-                    .addComponent(jRadioButtonCat)
-                    .addComponent(jRadioButtonDog)
-                    .addComponent(jRadioButtonBird))
+                .addGroup(jPanelButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelButtonContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jRadioButtonDog, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelButtonContainerLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanelButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonRabbit)
+                            .addComponent(jRadioButtonPig)
+                            .addComponent(jRadioButtonCat)
+                            .addComponent(jRadioButtonBird))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanelButtonContainerLayout.setVerticalGroup(
@@ -114,7 +123,7 @@ public class ButtonsDEmo extends javax.swing.JFrame {
             .addGroup(jPanelButtonContainerLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jRadioButtonBird)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jRadioButtonDog)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButtonCat)
@@ -132,9 +141,9 @@ public class ButtonsDEmo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanelButtonContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(123, 123, 123)
                 .addComponent(jLabelImageView, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,10 +158,7 @@ public class ButtonsDEmo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButtonDogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDogActionPerformed
-        ChangeLabel(evt);
-    }//GEN-LAST:event_jRadioButtonDogActionPerformed
-
+    
     private void jRadioButtonBirdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonBirdActionPerformed
        ChangeLabel(evt);
     }//GEN-LAST:event_jRadioButtonBirdActionPerformed
@@ -172,6 +178,10 @@ public class ButtonsDEmo extends javax.swing.JFrame {
     private void jRadioButtonRabbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRabbitActionPerformed
         ChangeLabel(evt);
     }//GEN-LAST:event_jRadioButtonRabbitActionPerformed
+
+    private void jRadioButtonBirdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButtonBirdKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonBirdKeyPressed
     private void ChangeLabel(java.awt.event.ActionEvent evt) {
         jLabelImageView.setIcon(createImage("./images/"
                 + evt.getActionCommand()

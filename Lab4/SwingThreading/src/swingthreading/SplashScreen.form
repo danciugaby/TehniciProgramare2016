@@ -42,7 +42,7 @@
   <SubComponents>
     <Component class="javax.swing.JColorChooser" name="jColorChooser1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try&#xa;{&#xa;Splash s = new Splash();&#xa;    s.setVisible(true);&#xa;    Thread.sleep(1000);&#xa;    s.setVisible(false);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try&#xa;{"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="}&#xa;catch(Exception ex)&#xa;{&#xa; System.out.println(ex);&#xa;}"/>
       </AuxValues>
     </Component>

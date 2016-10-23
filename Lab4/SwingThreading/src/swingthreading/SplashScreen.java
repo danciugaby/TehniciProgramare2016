@@ -17,7 +17,18 @@ public class SplashScreen extends javax.swing.JFrame {
      * Creates new form SplashScreen
      */
     public SplashScreen() {
+        try
+        {
+        Splash s = new Splash();
+        s.setVisible(true);
+        
         initComponents();
+        s.setVisible(false);
+        }
+        catch(Exception ex)
+        {
+            //..
+        }
     }
 
     /**
@@ -31,10 +42,6 @@ public class SplashScreen extends javax.swing.JFrame {
 
         try
         {
-            Splash s = new Splash();
-            s.setVisible(true);
-            Thread.sleep(1000);
-            s.setVisible(false);
             jColorChooser1 = new javax.swing.JColorChooser();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

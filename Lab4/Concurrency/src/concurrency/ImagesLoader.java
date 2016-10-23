@@ -28,6 +28,7 @@ public class ImagesLoader extends javax.swing.JFrame {
     Properties defaultProps = new Properties();
     String imagedir = "";
     final static Logger logger = Logger.getLogger(concurrency.ImagesLoader.class);
+    
     private String[] imageFileNames = {"1.png", "2.png",
         "3.png"};
 
@@ -41,7 +42,7 @@ public class ImagesLoader extends javax.swing.JFrame {
 
             in.close();
         } catch (Exception ex) {
-
+            
             logger.error("Error at opening properties file", ex);
         }
     }
@@ -66,15 +67,17 @@ public class ImagesLoader extends javax.swing.JFrame {
         loadimages.execute();
     }
 
-    protected ImageIcon createImageIcon(String path,
-            String description) {
+    protected ImageIcon createImageIcon (String path,
+            String description) throws Exception{
         java.net.URL imgURL = getClass().getResource(path);
         if (imgURL != null) {
             return new ImageIcon(imgURL, description);
         } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
+            
+            throw new  Exception("Couldn't find file: " + path);
+            
         }
+       
     }
      private Image getScaledImage(Image srcImg, int w, int h){
         BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
@@ -86,7 +89,7 @@ public class ImagesLoader extends javax.swing.JFrame {
     }
     private SwingWorker<Void, ThumbnailAction> loadimages = new SwingWorker<Void, ThumbnailAction>() {
         protected Void doInBackground() throws Exception {
-            for (int i = 0; i < imageFileNames.length; i++) {
+            for (int i = 0; i < imageFileNames.length+1; i++) {
                 ImageIcon icon;
                 icon = createImageIcon(imagedir + "/" + imageFileNames[i], Integer.toString(i, 0));
 
@@ -107,12 +110,19 @@ public class ImagesLoader extends javax.swing.JFrame {
         }
         
          protected void process(List<ThumbnailAction> chunks) {
+             try{
             for (ThumbnailAction thumbAction : chunks) {
                 JButton thumbButton = new JButton(thumbAction);
                 // add the new button BEFORE the last glue
                 // this centers the buttons in the toolbar
                 jToolBarImages.add(thumbButton, jToolBarImages.getComponentCount() - 1);
             }
+             }
+             catch(Throwable t)
+             {
+                 logger.error(t.getMessage());
+             }
+            
         }
 
     };
@@ -131,7 +141,13 @@ public class ImagesLoader extends javax.swing.JFrame {
         jButtonBrowseFolder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
+        jToolBarImages.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jToolBarImages.setRollover(true);
 
         jButtonBrowseFolder.setText("Browse Folder");
@@ -172,6 +188,10 @@ public class ImagesLoader extends javax.swing.JFrame {
     private void jButtonBrowseFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrowseFolderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBrowseFolderActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentResized
 
     /**
      * @param args the command line arguments
