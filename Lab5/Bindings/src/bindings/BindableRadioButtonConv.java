@@ -33,7 +33,7 @@ public class BindableRadioButtonConv extends org.jdesktop.beansbinding.Converter
     public Object convertReverse(Object value) {
         try {
             if (value != null) {
-                return ((Boolean) value) ? 1 : 0;
+                return ((Boolean) value) ? 51 : 0;
             } else {
                 return null;
             }

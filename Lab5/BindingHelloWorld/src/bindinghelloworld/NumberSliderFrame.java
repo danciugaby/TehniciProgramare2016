@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package bindinghelloworld;
-
+import org.jdesktop.beansbinding.*;
 /**
  *
  * @author gabriel.danciu
@@ -29,6 +29,8 @@ public class NumberSliderFrame extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         bindableRadioButtonConv1 = new bindings.BindableRadioButtonConv();
+        bindableRadioButtonValidator1 = new bindings.BindableRadioButtonValidator();
+        bindableTextSliderConvertor1 = new bindings.BindableTextSliderConvertor();
         jTextField1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSlider1 = new javax.swing.JSlider();
@@ -36,12 +38,16 @@ public class NumberSliderFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, jSlider1, org.jdesktop.beansbinding.ELProperty.create("${value}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSlider1, org.jdesktop.beansbinding.ELProperty.create("${value}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding.setConverter(bindableTextSliderConvertor1);
+        binding.setValidator(bindableRadioButtonValidator1);
         bindingGroup.addBinding(binding);
+
+        jSlider1.setMaximum(1000);
 
         jRadioButton1.setText("jRadioButton1");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSlider1, org.jdesktop.beansbinding.ELProperty.create("${value}"), jRadioButton1, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, jSlider1, org.jdesktop.beansbinding.ELProperty.create("${value}"), jRadioButton1, org.jdesktop.beansbinding.BeanProperty.create("selected"));
         binding.setConverter(bindableRadioButtonConv1);
         bindingGroup.addBinding(binding);
 
@@ -67,7 +73,7 @@ public class NumberSliderFrame extends javax.swing.JFrame {
                         .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,6 +136,8 @@ public class NumberSliderFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private bindings.BindableRadioButtonConv bindableRadioButtonConv1;
+    private bindings.BindableRadioButtonValidator bindableRadioButtonValidator1;
+    private bindings.BindableTextSliderConvertor bindableTextSliderConvertor1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider jSlider1;
