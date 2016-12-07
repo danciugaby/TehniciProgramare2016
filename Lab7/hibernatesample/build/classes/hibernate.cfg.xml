@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://danciugabyserver.database.windows.net:1433;database=DBFiles</property>
+    <property name="hibernate.connection.username">gaby</property>
+    <property name="hibernate.connection.password">Tehnicideprogramare2016</property>
+    <property name="hibernate.connection.pool_size">1</property>
+    <mapping class="" file="" jar="" package="" resource="hibernatesample/hibernate/hbm/hibernate.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="bindings.BindableRadioButtonConv" name="bindableRadioButtonConv1">
     </Component>
+    <Component class="bindings.BindableRadioButtonValidator" name="bindableRadioButtonValidator1">
+    </Component>
+    <Component class="bindings.BindableTextSliderConvertor" name="bindableTextSliderConvertor1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -41,7 +45,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField1" min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="102" max="32767" attributes="0"/>
@@ -67,21 +71,30 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <BindingProperties>
-        <BindingProperty name="text" source="jSlider1" sourcePath="${value}" target="jTextField1" targetPath="text" updateStrategy="1" immediately="false">
+        <BindingProperty name="text" source="jSlider1" sourcePath="${value}" target="jTextField1" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+          <Property name="converter" type="org.jdesktop.beansbinding.Converter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <ComponentRef name="bindableTextSliderConvertor1"/>
+          </Property>
+          <Property name="validator" type="org.jdesktop.beansbinding.Validator" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <ComponentRef name="bindableRadioButtonValidator1"/>
+          </Property>
         </BindingProperty>
       </BindingProperties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
     <Component class="javax.swing.JSlider" name="jSlider1">
+      <Properties>
+        <Property name="maximum" type="int" value="1000"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="jRadioButton1"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="selected" source="jSlider1" sourcePath="${value}" target="jRadioButton1" targetPath="selected" updateStrategy="0" immediately="false">
+        <BindingProperty name="selected" source="jSlider1" sourcePath="${value}" target="jRadioButton1" targetPath="selected" updateStrategy="1" immediately="false">
           <Property name="converter" type="org.jdesktop.beansbinding.Converter" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
             <Connection component="bindableRadioButtonConv1" type="bean"/>
           </Property>
